@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { AppContext } from "next/app";
 
-import Template from "../components/Template";
+import Template, { TemplateProps } from "../components/Template";
 
-export class Test extends Template {
+export class Test extends Template<TemplateProps> {
   static async getInitialProps(ctx) {
     console.log(ctx, "my contexxxxxxxt in test");
 
@@ -11,9 +11,10 @@ export class Test extends Template {
     //const pageProps = await Component.getInitialProps(ctx);
     //console.log(pageProps, "props in text ");
 
-    return {
-      name: "juan test",
-    };
+    const templateProps = Template.getInitialProps(ctx);
+    console.log(templateProps, "Template props inherit");
+
+    return templateProps;
   }
 
   render() {
