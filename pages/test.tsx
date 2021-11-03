@@ -1,20 +1,15 @@
 import React, { Component } from "react";
-import { AppContext } from "next/app";
+import type { NextPageContext } from "next";
 
-import Template, { TemplateProps } from "../components/Template";
+import { PortalContext } from "../components/PortalContext";
 
-export class Test extends Template<TemplateProps> {
-  static async getInitialProps(ctx) {
-    console.log(ctx, "my contexxxxxxxt in test");
+export class Test extends Component {
+  static async getInitialProps(ctx: NextPageContext) {
+    console.log(ctx, "ctx in test");
 
-    //const { Component, context } = ctx;
-    //const pageProps = await Component.getInitialProps(ctx);
-    //console.log(pageProps, "props in text ");
-
-    const templateProps = Template.getInitialProps(ctx);
-    console.log(templateProps, "Template props inherit");
-
-    return templateProps;
+    return {
+      name: "return from tesssssst",
+    };
   }
 
   render() {
@@ -23,4 +18,4 @@ export class Test extends Template<TemplateProps> {
   }
 }
 
-export default Test;
+export default PortalContext(Test);
